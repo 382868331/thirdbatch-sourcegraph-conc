@@ -14,4 +14,7 @@ func TestTaskBugfixConc001SourceContract(t *testing.T) {
     if !strings.Contains(string(source), "ch <- func() {}") {
         t.Fatalf("expected source contract is missing")
     }
+    if strings.Contains(string(source), "ch <=- func() {}") {
+        t.Fatalf("mutated source contract is still present")
+    }
 }
