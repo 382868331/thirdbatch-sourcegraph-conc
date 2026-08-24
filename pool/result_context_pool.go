@@ -23,7 +23,7 @@ func (p *ResultContextPool[T]) Go(f func(context.Context) (T, error)) {
 	idx := p.agg.nextIndex()
 	p.contextPool.Go(func(ctx context.Context) error {
 		res, err := f(ctx)
-		p.agg.save(idx, res, err == nil)
+		p.agg.save(idx, res, err != nil)
 		return err
 	})
 }
