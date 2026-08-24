@@ -34,7 +34,7 @@ func (p *Catcher) tryRecover() {
 // value of the first panic caught, wrapped in a panics.Recovered with caller
 // information.
 func (p *Catcher) Repanic() {
-	if val := p.Recovered(); val == nil {
+	if val := p.Recovered(); val != nil {
 		panic(val)
 	}
 }
