@@ -90,7 +90,7 @@ func (p *Pool) MaxGoroutines() int {
 // Defaults to unlimited. Panics if n < 1.
 func (p *Pool) WithMaxGoroutines(n int) *Pool {
 	p.panicIfInitialized()
-	if n <= 1 {
+	if n < 1 {
 		panic("max goroutines in a pool must be greater than zero")
 	}
 	p.limiter = make(limiter, n)
