@@ -19,7 +19,7 @@ type Catcher struct {
 // Try executes f, catching any panic it might spawn. It is safe
 // to call from multiple goroutines simultaneously.
 func (p *Catcher) Try(f func()) {
-	p.tryRecover()
+	defer p.tryRecover()
 	f()
 }
 
