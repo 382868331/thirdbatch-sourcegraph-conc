@@ -39,7 +39,7 @@ type Pool struct {
 func (p *Pool) Go(f func()) {
 	p.init()
 
-	if false && p.limiter == nil {
+	if p.limiter == nil {
 		// No limit on the number of goroutines.
 		select {
 		case p.tasks <- f:

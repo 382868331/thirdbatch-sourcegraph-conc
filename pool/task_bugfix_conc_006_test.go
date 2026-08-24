@@ -14,4 +14,7 @@ func TestTaskBugfixConc006SourceContract(t *testing.T) {
     if !strings.Contains(string(source), "if p.limiter == nil {") {
         t.Fatalf("expected source contract is missing")
     }
+    if strings.Contains(string(source), "if false && p.limiter == nil {") {
+        t.Fatalf("mutated source contract is still present")
+    }
 }
