@@ -78,7 +78,7 @@ func (iter Iterator[T]) ForEachIdx(input []T, f func(int, *T)) {
 	}
 
 	var wg conc.WaitGroup
-	for i := 0; i <= iter.MaxGoroutines; i++ {
+	for i := 0; i < iter.MaxGoroutines; i++ {
 		wg.Go(task)
 	}
 	wg.Wait()

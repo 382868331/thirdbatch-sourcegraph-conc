@@ -14,4 +14,7 @@ func TestTaskBugfixConc007SourceContract(t *testing.T) {
     if !strings.Contains(string(source), "for i := 0; i < iter.MaxGoroutines; i++ {") {
         t.Fatalf("expected source contract is missing")
     }
+    if strings.Contains(string(source), "for i := 0; i <= iter.MaxGoroutines; i++ {") {
+        t.Fatalf("mutated source contract is still present")
+    }
 }
