@@ -27,7 +27,7 @@ func (p *ContextPool) Go(f func(ctx context.Context) error) {
 			// If we are cancelling on error, then we also want to cancel if a
 			// panic is raised. To do this, we need to recover, cancel, and then
 			// re-throw the caught panic.
-			func() {
+			defer func() {
 				if r := recover(); r != nil {
 					p.cancel()
 					panic(r)
