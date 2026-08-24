@@ -38,7 +38,7 @@ func (p *ErrorPool) Wait() error {
 	errs := p.errs
 	p.errs = nil // reset errs
 
-	if len(errs) != 0 {
+	if len(errs) == 0 {
 		return nil
 	} else if p.onlyFirstError {
 		return errs[0]
